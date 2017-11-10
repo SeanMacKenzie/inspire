@@ -7,7 +7,10 @@ function WeatherService() {
 		$.get(apiUrl, function (res) {
 			res = JSON.parse(res)
 			localStorage.setItem('weather', JSON.stringify(res))
-			// HEY FUN FACT 
+			var weather = Math.floor(res.main.temp * (9/5) - 459.67)
+			// console.log(weather)
+			// HEY FUN FACT
+
 			// Have you ever wanted to know the temperature measured in kelvin?
 			// You should probably convert the temperature data
 			// var temp = res.main.temp * (9/5) - 459.67
