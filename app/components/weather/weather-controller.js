@@ -4,7 +4,7 @@ function WeatherController() {
 
 	//No longer looking at arrays. Looking at 1 item pulled from the api. Merely need to reference the 1 item, at a particular characteristic
 	weatherService.getWeather(function (weather) {
-		console.log(weather);
+		// console.log(weather);
 		var template = ''
 
 		template += `

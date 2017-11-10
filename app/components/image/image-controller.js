@@ -3,7 +3,7 @@ function ImageController() {
 	var imageService = new ImageService()
 
 	imageService.getImage(function(image) {
-		console.log(image);
+		// console.log(image);
 		template = ''
 		template = `url(${image.url})`
 		document.body.style.backgroundImage = template
