@@ -7,6 +7,7 @@ function TodoController() {
 	// removeTodo takes in a todoId and sends a delete request to the server
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
 	var todoService = new TodoService()
+	var todoFieldElem = document.getElementById('todo')
 
 	// Use this getTodos function as your callback for all other edits
 	function getTodos(){
@@ -14,10 +15,23 @@ function TodoController() {
 		todoService.getTodos(draw)
 	}
 
+	// getTodos()
+	
 	function draw(todos) {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
 		var template = ''
+		for (var i = 0; i < todos.length; i++) {
+			var todo = todos.length[i]
+			template = `
+				<div class="col-xs-4">
+					<h4>Todo item 1</h4>
+					<h4>Todo item 2</h4>
+					<h4>Todo item 3</h4>
+				</div>
+			`
+		}
+		
 		//DONT FORGET TO LOOP
 	}
 
@@ -27,7 +41,10 @@ function TodoController() {
 		var form = e.target
 		var todo = {
 			// DONT FORGET TO BUILD YOUR TODO OBJECT
+			description: form.description.value,
+			completed: false
 		}
+		form.value = ''
 
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
