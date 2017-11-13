@@ -1,3 +1,11 @@
-.big-picture{
-    background-size: cover
+.container {
+    height: 100vh
 }
+.big-picture{
+    background-size: cover;
+    display: inline
+}
+
+/* .force-to-bottom {
+    position: absolute
+} */

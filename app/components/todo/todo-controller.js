@@ -7,7 +7,7 @@ function TodoController() {
 	// removeTodo takes in a todoId and sends a delete request to the server
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
 	var todoService = new TodoService()
-	var todoFieldElem = document.getElementById('todo')
+	var todoElem = document.getElementById('todo')
 
 	// Use this getTodos function as your callback for all other edits
 	function getTodos(){
@@ -15,23 +15,23 @@ function TodoController() {
 		todoService.getTodos(draw)
 	}
 
-	// getTodos()
 	
-	function draw(todos) {
+	
+	function draw(todoList) {
+		
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
 		var template = ''
-		for (var i = 0; i < todos.length; i++) {
-			var todo = todos.length[i]
-			template = `
+		for (var i = 0; i < todoList.length; i++) {
+			var todo = todoList[i]
+			template += `
 				<div class="col-xs-4">
-					<h4>Todo item 1</h4>
-					<h4>Todo item 2</h4>
-					<h4>Todo item 3</h4>
+					<h4>${todo.description}</h4>
+					
 				</div>
 			`
 		}
-		
+		todoElem.innerHTML = template
 		//DONT FORGET TO LOOP
 	}
 
@@ -44,7 +44,8 @@ function TodoController() {
 			description: form.description.value,
 			completed: false
 		}
-		form.value = ''
+		form.description.value = ''
+		
 
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
@@ -61,10 +62,12 @@ function TodoController() {
 
 	this.removeTodo = function (todoId) {
 		// ask the service to run the remove todo with this id
+		todoService.removeTodo(todoId, getTodos)
 
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
 
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
-
+	getTodos()
+	
 }
