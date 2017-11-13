@@ -3,9 +3,25 @@
 }
 .big-picture{
     background-size: cover;
-    display: inline
+    /* opacity: 0.8 */
+    /* display: inline */
 }
 
+ /* .alpha {
+    background-blend-mode: 0.5
+}
+
+.beta {
+    opacity: 0.5
+}
+
+.gamma {
+    opacity: 0.5
+}
+
+.delta {
+    opacity: 0.5
+}  */
 /* .force-to-bottom {
     position: absolute
 } */
