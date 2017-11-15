@@ -1,27 +1,21 @@
 .container {
     height: 100vh
+    
 }
 .big-picture{
     background-size: cover;
-    /* opacity: 0.8 */
-    /* display: inline */
 }
 
- /* .alpha {
-    background-blend-mode: 0.5
+.beta{
+    background-color: rgba(245, 245, 245, 0.5);
+    padding: 10%;
 }
 
-.beta {
-    opacity: 0.5
+.alpha{
+    background-color: rgba(245, 245, 245, 0.5);
 }
 
-.gamma {
-    opacity: 0.5
+.gamma{
+    background-color: rgba(245, 245, 245, 0.5);
+    /* padding: 10%;    */
 }
-
-.delta {
-    opacity: 0.5
-}  */
-/* .force-to-bottom {
-    position: absolute
-} */

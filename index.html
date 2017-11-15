@@ -9,27 +9,30 @@
 </head>
 
 <body id="body" class="big-picture">
-	<div class="container">
+	<div class="container-fluid">
 
-		<div class="row alpha text-right" id="weather">
+		<div class="row text-right">
+			<div class="col-xs-3"></div>
+			<div class="col-xs-3"></div>
+			<div class="col-xs-3"></div>
+			<div class="col-xs-3 alpha" id="weather"></div>
+		</div>
+		<div class="row text-center">
+			<div class="col-xs-4"></div>
+			<div class="col-xs-4 beta">
+				<h1>Luceo non uro</h1>
 
+			</div>
+			<div class="col-xs-4"></div>
 		</div>
 
-		<div class="row beta text-center align-bottom" id="quote">
+		<div class="row gamma text-center" id="quote">
 
 
 		</div>
-		<div class="row gamma text-center align-bottom" id="todo">
-			<!-- <div class="col-xs-4">
-				<h4>Todo item 1</h4>
-				<h4>Todo item 2</h4>
-				<h4>Todo item 3</h4>
-			</div> -->
-		</div>
-
 		<div class="row delta" id="form">
-			<div class="col-xs-6 panel panel-default">
-				
+			<div class="col-xs-4 panel panel-default">
+
 				<form onsubmit="app.controllers.todoController.addTodoFromForm(event)">
 					<div class="form-group">
 						<label for="description">Add item:</label>
@@ -43,6 +46,15 @@
 			</div>
 
 		</div>
+
+		<div class="row epsilon text-center" id="todo">
+
+
+		</div>
+		<div class="row zeta text-center" id="todo-count">
+
+		</div>
+
 	</div>
 
 

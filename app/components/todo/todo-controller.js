@@ -8,31 +8,65 @@ function TodoController() {
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
 	var todoService = new TodoService()
 	var todoElem = document.getElementById('todo')
+	var todoCountElem = document.getElementById('todo-count')
 
 	// Use this getTodos function as your callback for all other edits
-	function getTodos(){
+	function getTodos() {
 		//FYI DONT EDIT ME :)
 		todoService.getTodos(draw)
 	}
 
-	
-	
+
+
 	function draw(todoList) {
-		
+
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
+		counterTemplate = ''
+		counterTemplate = `
+			<div class="col-xs-2 text-center thumbnail">
+				<h4>${todoList.length} to dos</h4>
+			</div>
+		
+		
+		`
 		var template = ''
 		for (var i = 0; i < todoList.length; i++) {
 			var todo = todoList[i]
-			template += `
-				<div class="col-xs-4">
+			if (todo.completed === true) {
+				template += `
+				<div class="col-xs-2 text-center thumbnail">
 					<h4>${todo.description}</h4>
 					
+						<div class="form-check">
+							<label class="form-check-label">
+								<input onclick="app.controllers.todoController.toggleTodoStatus(${i})" type="checkbox" class="form-check-input" checked>
+							</label>
+						</div>
+					<button onlick="app.controllers.todoController.removeTodo(${i})" type="button" class="btn btn-default btn-sm">Delete</button>
 				</div>
-			`
+				`
+			} else {
+				template += `
+				<div class="col-xs-2 text-center thumbnail">
+					<h4>${todo.description}</h4>
+					
+						<div class="form-check">
+							<label class="form-check-label">
+								<input onclick="app.controllers.todoController.toggleTodoStatus(${i})" type="checkbox" class="form-check-input">
+							</label>
+						</div>
+					<button onclick="app.controllers.todoController.removeTodo(${i})" type="button" class="btn btn-default btn-sm">Delete</button>
+				</div>
+				`
+			}
+
+			todoElem.innerHTML = template
+			todoCountElem.innerHTML = counterTemplate
+			//DONT FORGET TO LOOP
 		}
-		todoElem.innerHTML = template
-		//DONT FORGET TO LOOP
+
+
 	}
 
 	this.addTodoFromForm = function (e) {
@@ -45,13 +79,13 @@ function TodoController() {
 			completed: false
 		}
 		form.description.value = ''
-		
+
 
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
 		//YOU SHOULDN'T NEED TO CHANGE THIS
 		todoService.addTodo(todo, getTodos)
-		                         //^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
+		//^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
 	}
 
 	this.toggleTodoStatus = function (todoId) {
@@ -61,13 +95,14 @@ function TodoController() {
 	}
 
 	this.removeTodo = function (todoId) {
-		// ask the service to run the remove todo with this id
+		// debugger
+		
 		todoService.removeTodo(todoId, getTodos)
-
+		
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
 
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
 	getTodos()
-	
+
 }
