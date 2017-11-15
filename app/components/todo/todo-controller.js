@@ -37,28 +37,29 @@ function TodoController() {
 				template += `
 				<div class="col-xs-2 text-center thumbnail">
 					<h4>${todo.description}</h4>
-					
-						<div class="form-check">
-							<label class="form-check-label">
-								<input onclick="app.controllers.todoController.toggleTodoStatus(${i})" type="checkbox" class="form-check-input" checked>
-							</label>
-						</div>
-					<button onlick="app.controllers.todoController.removeTodo(${i})" type="button" class="btn btn-default btn-sm">Delete</button>
+					<div class="form-check">
+						<label class="form-check-label">
+							<input onclick="app.controllers.todoController.toggleTodoStatus(${i})" type="checkbox" class="form-check-input" checked>
+						</label>
+					</div>
+					<button onclick="app.controllers.todoController.removeTodo(${i})" type="button" class="btn btn-default btn-sm">Delete</button>
 				</div>
-				`
+			`
+					
 			} else {
 				template += `
 				<div class="col-xs-2 text-center thumbnail">
 					<h4>${todo.description}</h4>
+					<div class="form-check">
+						<label class="form-check-label">
+							<input onclick="app.controllers.todoController.toggleTodoStatus(${i})" type="checkbox" class="form-check-input">
+						</label>
+					</div>
 					
-						<div class="form-check">
-							<label class="form-check-label">
-								<input onclick="app.controllers.todoController.toggleTodoStatus(${i})" type="checkbox" class="form-check-input">
-							</label>
-						</div>
-					<button onclick="app.controllers.todoController.removeTodo(${i})" type="button" class="btn btn-default btn-sm">Delete</button>
 				</div>
-				`
+					`
+							
+				
 			}
 
 			todoElem.innerHTML = template
